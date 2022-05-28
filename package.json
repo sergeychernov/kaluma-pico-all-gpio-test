@@ -1,0 +1,27 @@
+{
+  "name": "kaluma-pico-all-gpio-test-board",
+  "version": "1.0.0",
+  "description": "Kaluma library for Pico ALL GPIO TEST board.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint './index.js'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sergeychernov/kaluma-pico-all-gpio-test-board.git"
+  },
+  "keywords": [
+    "kaluma",
+    "pico",
+    "gpio",
+    "test",
+    "board"
+  ],
+  "author": "Sergey Chernov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergeychernov/kaluma-pico-all-gpio-test-board/issues"
+  },
+  "homepage": "https://github.com/sergeychernov/kaluma-pico-all-gpio-test-board#readme"
+}
