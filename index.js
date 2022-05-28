@@ -68,13 +68,24 @@ class TestBoard {
     }
   }
 
-  setBinary(i, value) {
-    value = limit(value, 0, 31);
-    const binaryString = (value >>> 0).toString(2).padStart(5, 0);
-    for (let j = 0; j < 5; j++) {
-      this.set(i, j, binaryString.charAt(j) === '1' ? HIGH : LOW);
+  setBinary(value, i) {
+    if(i !== undefined){
+      value = limit(value, 0, 31);
+      const binaryString = (value >>> 0).toString(2).padStart(5, 0);
+      for (let j = 0; j < 5; j++) {
+        this.set(i, j, binaryString.charAt(j) === '1' ? HIGH : LOW);
+      }
+      console.log(binaryString.padStart(5, 0), value);
+    } else {
+      value = limit(value, 0, 1048575);
+      const binaryString = (value >>> 0).toString(2).padStart(20, 0);
+      let counter = 0;
+      for(let i = 0; i < 4; i++){
+        for (let j = 0; j < 5; j++) {
+          this.set(i, j, binaryString.charAt(counter++) === '1' ? HIGH : LOW);
+        }
+      }
     }
-    console.log(binaryString.padStart(5, 0), value);
   }
 
   getState(i, j) {
