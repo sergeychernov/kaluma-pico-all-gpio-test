@@ -87,18 +87,18 @@ class TestBoard {
     }
   }
 
-  setBinaryCol(value, j) {
-    if(j !== undefined){
-      value = limit(value, 0, 31);
-      const binaryString = (value >>> 0).toString(2).padStart(5, 0);
-      for (let i = 0; i < 4; i++) {
-        this.set(i, j, binaryString.charAt(i) === '1' ? HIGH : LOW);
-      }
-    } else {
-      value = limit(value, 0, 1048575);
-      const binaryString = (value >>> 0).toString(2).padStart(20, 0);
+  setBinaryCol(value, minJ, maxJ) {
+    if(minJ === undefined){
+      minJ = 0;
+      maxJ = 4;
+    } else if (maxJ === undefined) {
+      maxJ = minJ;
+    }
+
+    if( minJ <= maxJ && value >= 0 && value < (1 << ((maxJ-minJ+1)*4))){
+      const binaryString = (value >>> 0).toString(2).padStart(((maxJ-minJ+1)*4), 0);
       let counter = 0;
-      for (let j = 0; j < 5; j++){
+      for (let j = minJ; j < maxJ+1; j++){
         for(let i = 0; i < 4; i++){
           this.set(i, j, binaryString.charAt(counter++) === '1' ? HIGH : LOW);
         }
