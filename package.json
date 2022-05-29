@@ -1,6 +1,6 @@
 {
   "name": "kaluma-pico-all-gpio-test-board",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Kaluma library for Pico ALL GPIO TEST board.",
   "main": "index.js",
   "scripts": {

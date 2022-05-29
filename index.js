@@ -75,7 +75,6 @@ class TestBoard {
       for (let j = 0; j < 5; j++) {
         this.set(i, j, binaryString.charAt(j) === '1' ? HIGH : LOW);
       }
-      console.log(binaryString.padStart(5, 0), value);
     } else {
       value = limit(value, 0, 1048575);
       const binaryString = (value >>> 0).toString(2).padStart(20, 0);
@@ -87,6 +86,26 @@ class TestBoard {
       }
     }
   }
+
+  setBinaryCol(value, j) {
+    if(j !== undefined){
+      value = limit(value, 0, 31);
+      const binaryString = (value >>> 0).toString(2).padStart(5, 0);
+      for (let i = 0; i < 4; i++) {
+        this.set(i, j, binaryString.charAt(i) === '1' ? HIGH : LOW);
+      }
+    } else {
+      value = limit(value, 0, 1048575);
+      const binaryString = (value >>> 0).toString(2).padStart(20, 0);
+      let counter = 0;
+      for (let j = 0; j < 5; j++){
+        for(let i = 0; i < 4; i++){
+          this.set(i, j, binaryString.charAt(counter++) === '1' ? HIGH : LOW);
+        }
+      }
+    }
+  }
+  
 
   getState(i, j) {
     i = limit(i, 0, 3);
